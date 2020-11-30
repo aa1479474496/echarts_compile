@@ -1,0 +1,86 @@
+@import "./themes.scss";
+
+// 遍历主题map
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+
+    [data-theme="#{$theme-name}"] & {
+      @content;
+    }
+  }
+}
+
+// 声明一个根据key获取颜色的function
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+// 获取背景颜色
+@mixin bg_color($color) {
+  @include themeify {
+    background-color: themed($color);
+  }
+}
+
+// 文字颜色
+@mixin text_color($color) {
+  @include themeify {
+    color: themed($color);
+  }
+}
+
+// 阴影
+@mixin box_shadow($color) {
+  @include themeify {
+    box-shadow: themed($color);
+  }
+}
+
+// 边框颜色
+
+@mixin border_color($color, $border: border) {
+  @include themeify {
+    #{$border}-color: themed($color);
+  }
+}
+
+// 边框， 可单独设置 border-left/border-top， solid/dashed/dotted
+@mixin border($color: color_3, $border: border, $width: 1px, $style: solid) {
+  #{$border}: {
+    width: $width;
+    style: $style;
+  }
+
+  @include border_color($color, $border);
+}
+
+
+
+// 定义的公用mixin
+// 单行文本截断
+@mixin one_line_hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本截断
+@mixin multiple_line_hidden($clamp) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $clamp;
+  overflow: hidden;
+}
+
+
+//关闭x动画
+@mixin closeAnimate {
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    transform: rotate(180deg);
+    @include text_color(color_2);
+  }
+}
