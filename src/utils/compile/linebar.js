@@ -7,6 +7,21 @@ export class LineBarHelper extends EchartsHelper {
 
   run(chartInfo) {
     this.setInfo(chartInfo);
-    console.log('LineBarHelper2', this.list);
+    let option = {
+      tooltip: {
+        show: true,
+        trigger: "axis"
+      },
+      xAxis: {
+        type: 'category',
+        data: this.gvals
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: this.series
+    }
+    console.log('LineBarHelper2', option);
+    return option;
   }
 }

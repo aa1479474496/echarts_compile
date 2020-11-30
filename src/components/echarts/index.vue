@@ -2,7 +2,6 @@
   <echarts
     ref="echarts"
     :options="options"
-    :theme="theme"
     :autoResize="true"
     class="chart_box_wrap"
   ></echarts>
@@ -26,34 +25,19 @@ import "echarts/lib/component/graphic";
 import "echarts/lib/component/visualMap";
 import "echarts/lib/component/markLine";
 
+
+import compile from '@/utils/compile/index.js';
+
 // import chinaMap from '@/config/china.json';
 // echarts.registerMap("china", chinaMap);
 // import optioncompile from "@/components/report/chart/com/compile.js";
 export default {
+   components: {
+    echarts,
+  },
   data() {
     return {
-      watchShallow: true,
-      lastmd5: "",
-      // options: {},
-      options: {
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        yAxis: {
-          type: "value",
-        },
-        series: [
-          {
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: "line",
-            areaStyle: {},
-          },
-        ],
-      },
-      theme: "",
-      unLegend: [],
+      options: {}
     };
   },
 
@@ -67,16 +51,8 @@ export default {
         return {};
       }
 
-      let _theme = bi.dash.data.attr.theme || "";
-      let _lastmd5 = bi.md5(JSON.stringify(data)) + _theme;
-      if (_lastmd5 == this.lastmd5 && !force) {
-        console.log("chartdata nochange", _lastmd5);
-        return this.options;
-      }
-
-      this.lastmd5 = _lastmd5;
-      let _option = optioncompile.run(data, this.chartInfo.w, this.chartInfo.h);
-      _option.animation = false;
+      
+      let _option = compile.init(data);
       //   console.log('_option:', _option, data);
 
       // this.options = {
@@ -88,7 +64,7 @@ export default {
       // };
 
       this.options = _option;
-      this.theme = bi.dash.data.attr.theme || "";
+      console.log('-------------', this.options);
       return this.options;
     },
   },
@@ -98,9 +74,17 @@ export default {
     window.dispatchEvent(new Event("resize"));
   },
 
-  components: {
-    echarts,
-  },
+  watch: {
+    chartInfo: {
+      handler(val, oldval) {
+        this.setOptions(val);
+      },
+      immediate: true,
+      deep: true
+    }
+  }
+
+ 
 };
 </script>
 
