@@ -1,5 +1,12 @@
-function linebar(chartInfo, context) {
-  context.test = 111;
-}
+import { EchartsHelper } from './base.js';
 
-export default linebar;
+export class LineBarHelper extends EchartsHelper {
+  constructor() {
+    super();
+  }
+
+  run(chartInfo) {
+    this.setInfo(chartInfo);
+    console.log('LineBarHelper2', this.list);
+  }
+}

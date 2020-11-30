@@ -12,8 +12,8 @@
 </template>
 
 <script>
+import compile2 from '@/utils/compile2/index.js';
 import compile from '@/utils/compile/index.js';
-import compile2 from '@/utils/echartsHelper.js';
 import echarts from "@/components/echarts/index.vue";
 export default {
   components: {
@@ -50,7 +50,7 @@ export default {
 
     // compile.setInfo(chartInfo);
 
-    compile2.init(chartInfo);
+    compile.init(chartInfo);
 
     // console.log('=======', compile);
   },
