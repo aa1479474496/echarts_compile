@@ -4,7 +4,7 @@
     <el-row :gutter="20" style="padding: 12px">
       <el-col :span="24">
         <div style="height: 350px">
-          <echarts v-if="chartInfo" :chartInfo="chartInfo"/>
+          <echarts v-if="chartInfo" :chartInfo="chartInfo" @echartsInit="echartsInit"/>
         </div>
       </el-col>
     </el-row>
@@ -38,7 +38,6 @@ export default {
   mounted() {
     
     this.list = [
-      // { 城市: "21", 成交面积: "12345972.00", 平均面积: "12345972.00" },
       {时间: '1月', 城市: "21", 成交面积: "5972.00", 平均面积: "1972.00" },
       {时间: '2月', 城市: "22", 成交面积: "10000.00", 平均面积: "12000.00" },
       {时间: '3月', 城市: "23", 成交面积: "1230.00", 平均面积: "3450.00" },
@@ -53,11 +52,17 @@ export default {
         { name: '城市' }
       ],
       stat: [
-        { name: '成交面积', unit: 'm²', yAxisIndex: 0, type: 'bar' },
-        { name: '平均面积', unit: 'm²', yAxisIndex: 0, type: 'bar' },
+        { name: '成交面积', unit: 'm²', yAxisIndex: 0, type: 'bar', color: '#00cc66' },
+        { name: '平均面积', unit: 'm²', yAxisIndex: 0, type: 'bar', color: '#006eff' },
       ],
+      customSetting: {
+        legend: {
+          top: 20
+        }
+      },
       list: this.list
     };
+
 
     let chartInfo2 = {
       type: 'linebar',
@@ -74,6 +79,12 @@ export default {
     this.chartInfo = chartInfo;
     this.chartInfo2 = chartInfo2;
   },
+
+  methods: {
+    echartsInit(instance) {
+      console.log('instance', instance);
+    }
+  }
 };
 </script>
 

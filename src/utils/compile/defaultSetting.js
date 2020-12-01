@@ -7,7 +7,7 @@ let title = {
 let legend = {
   show: true,
   left: "center",
-  top: "10",
+  top: 0,
   type: "scroll",
   pageTextStyle: {
     color: "#7B8BAB"
@@ -30,7 +30,7 @@ let grid = {
 };
 let tooltip = {
   trigger: "axis",
-  padding: 0,
+  padding: 4,
   enterable: true,
   confine: true,
   extraCssText: "z-index:999"

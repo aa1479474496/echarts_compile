@@ -1,3 +1,5 @@
+
+import chartSettings from './defaultSetting.js';
 export class EchartsHelper {
   constructor() {
     this.type = '';
@@ -6,33 +8,29 @@ export class EchartsHelper {
     this.list = [];
     this.gvals = []; // 维度名
     this.series = [];
+    this.customSetting = {};
+    this.setting = {};
   }
 
   setInfo(chartInfo) {
-    let { type = 'linebar', group = [], stat = [], list = [] } = chartInfo;
+    let { type = 'linebar', group = [], stat = [], list = [], customSetting = {} } = chartInfo;
     this.type = type;
     this.group = group;
     this.stat = stat;
     this.list = list;
+    this.customSetting = customSetting;
     if (this.group[0] && this.group[0].name) {
-      // debugger
-      this.gvals =  _.uniq(_.map(this.list, this.group[0].name));
-      // console.log('this.gvals', this.gvals);
+      this.gvals = _.uniq(_.map(this.list, this.group[0].name));
     }
-
-    this.stat.forEach((stat) => {
-      let data = _.map(this.list, stat.name);
-      this.series.push({
-        ...stat,
-        data,
-        showBackground: true,
-      });
-    });
-    console.log('dddd', this.series);
+   
+    this.setting = _.cloneDeep(chartSettings[this.type].setting || {});
+    this.setting = _.merge(this.setting, this.customSetting);
+    this.setting.xAxis.data = this.gvals; // 生成横轴
   }
 
-  run() {
-    console.log('base run');
-
+  compile(_options = {}) {
+     // 保留特殊配置
+    this.setting.series = this.series;
+    return _.merge(this.setting, _options);
   }
 } 

@@ -72,6 +72,7 @@ export default {
 
   mounted() {
     window.dispatchEvent(new Event("resize"));
+    this.$emit("echartsInit", this.$refs.echarts);
   },
 
   watch: {

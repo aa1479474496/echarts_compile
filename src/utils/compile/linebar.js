@@ -5,23 +5,22 @@ export class LineBarHelper extends EchartsHelper {
     super();
   }
 
+  getSeries() {
+    this.stat.forEach((stat) => {
+      let data = _.map(this.list, stat.name);
+      this.series.push({
+        ...stat,
+        data,
+        showBackground: true,
+      });
+    });
+  }
+
   run(chartInfo) {
     this.setInfo(chartInfo);
-    let option = {
-      tooltip: {
-        show: true,
-        trigger: "axis"
-      },
-      xAxis: {
-        type: 'category',
-        data: this.gvals
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: this.series
-    }
-    console.log('LineBarHelper2', option);
-    return option;
+    this.getSeries();
+    return this.compile();
   }
 }
+
+

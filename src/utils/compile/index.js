@@ -14,7 +14,7 @@ class Compile {
   linebar() {
     return new LineBarHelper(this.chartInfo).run(this.chartInfo);
   }
-}
+ }
 
 let compile = new Compile();
 export default compile;
