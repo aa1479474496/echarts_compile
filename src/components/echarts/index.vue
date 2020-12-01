@@ -64,7 +64,7 @@ export default {
       // };
 
       this.options = _option;
-      console.log('-------------', this.options);
+      console.log('chartoptions::::', this.options);
       return this.options;
     },
   },

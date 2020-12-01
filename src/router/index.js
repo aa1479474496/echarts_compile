@@ -2,13 +2,33 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-const EchartsPage = () =>
-  import(/* webpackChunkName: "EchartsPage" */ "@/pages/echarts/index.vue");
+const EchartsIndex = () =>
+import(/* webpackChunkName: "EchartsPage" */ "@/pages/echarts/index.vue");
+
+const EchartsDiffType = () =>
+  import(/* webpackChunkName: "EchartsDiffType" */ "@/pages/echarts/diffType.vue");
+const EchartsDiffSettings = () =>
+  import(/* webpackChunkName: "EchartsDiffSettings" */ "@/pages/echarts/diffSettings.vue");
 
 const routes = [
   {
     path: '/echarts',
-    component: EchartsPage
+    component: EchartsIndex,
+    redirect: '/echarts/difftype',
+    children: [
+      {
+        path: '/echarts/difftype',
+        component: EchartsDiffType,
+        name: 'echarts/difftype',
+        title: '切换不同的图表类型'
+      },
+      {
+        path: '/echarts/diffsettings',
+        component: EchartsDiffSettings,
+        name: 'echarts/diffsettings',
+        title: '数据相同的不同配置'
+      }
+    ]
   }
 ]
 

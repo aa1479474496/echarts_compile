@@ -2,7 +2,6 @@
 import chartSettings from './defaultSetting.js';
 export class EchartsHelper {
   constructor(chartInfo) {
-    console.log('base');
     this.chartInfo = chartInfo;
     this.type = '';
     this.settingType = ''; // 使用defaultSettings 中的配置

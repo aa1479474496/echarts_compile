@@ -10,6 +10,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "@/assets/css/reset.scss";
 import "@/assets/iconfont/iconfont.js";
 import "@/assets/iconfont/iconfont.css";
+import "@/assets/css/transition.scss";
 
 Vue.use(ElementUI);
 Vue.prototype._ = _;

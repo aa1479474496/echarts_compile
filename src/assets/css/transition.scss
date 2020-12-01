@@ -1,0 +1,36 @@
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+// slide-top 向上出现， 参考弹窗
+.slide-top-enter-active,
+.slide-top-leave-active {
+  transition: all 0.5s;
+}
+.slide-top-enter,
+.slide-top-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// slide-left 向左出现， 参考设置主题，图表类型等
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all cubic-bezier(0.47, 0, 0.745, 0.715) .3s;
+}
+.slide-left-enter,
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
