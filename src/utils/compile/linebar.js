@@ -8,6 +8,11 @@ export class LinebarHelper extends EchartsHelper {
   getSeries() {
     this.stat.forEach((stat) => {
       let data = _.map(this.list, stat.name);
+      // // 面积图特殊处理
+      if (stat.type == 'area') {
+        stat.type = "line";
+        stat.areaStyle = {};
+      }
       this.series.push({
         ...stat,
         data,
