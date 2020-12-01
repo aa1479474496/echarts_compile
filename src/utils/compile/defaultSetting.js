@@ -145,23 +145,44 @@ let label = {
   padding: 2
 };
 
-export default {
-  linebar: {
-    title: "柱状图",
-    setting: {
-      title,
-      legend,
-      grid,
-      tooltip,
-      toolbox,
-      xAxis,
-      yAxis: [yLeftAxis, yRightAxis]
-    },
-    series: {
-      ...series,
-      label,
-      yAxisIndex: 0,
-      type: "bar"
-    },
+let linebar = {
+  title: "柱状图",
+  setting: {
+    title,
+    legend,
+    grid,
+    tooltip,
+    toolbox,
+    xAxis,
+    yAxis: [yLeftAxis, yRightAxis]
   }
+}
+
+let crossbar = {
+  title: "横向柱状图",
+  setting: {
+    title,
+    legend,
+    grid,
+    tooltip,
+    toolbox,
+    xAxis,
+    yAxis: [{
+      ...yLeftAxis,
+    }]
+  }
+}
+
+export default {
+  linebar,
+  crossbar,
+  stackLinebar: {
+    ...linebar,
+    title: "柱状堆叠图",
+  },
+
+  stackCrossbar: {
+    ...crossbar,
+    title: "横向柱状图",
+  },
 }

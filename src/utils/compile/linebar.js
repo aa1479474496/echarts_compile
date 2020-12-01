@@ -1,8 +1,8 @@
 import { EchartsHelper } from './base.js';
 
-export class LineBarHelper extends EchartsHelper {
-  constructor() {
-    super();
+export class LinebarHelper extends EchartsHelper {
+  constructor(chartInfo) {
+    super(chartInfo);
   }
 
   getSeries() {
@@ -16,11 +16,25 @@ export class LineBarHelper extends EchartsHelper {
     });
   }
 
-  run(chartInfo) {
-    this.setInfo(chartInfo);
+  run() {
+    this.baseSetInfo(this.chartInfo);
     this.getSeries();
-    return this.compile();
+    return this.baseCompile();
+  }
+} 
+
+export class StackLinebarHelper  extends LinebarHelper {
+  constructor(chartInfo) {
+    super(chartInfo);
+  }
+
+  run() {
+    this.baseSetInfo(this.chartInfo);
+    this.getSeries();
+    this.baseSetStack();
+    return this.baseCompile();
   }
 }
+
 
 
