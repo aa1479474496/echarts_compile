@@ -1,4 +1,4 @@
-
+import Tools from '@/utils/tools.js';
 import chartSettings from './defaultSetting.js';
 export class EchartsHelper {
   constructor(chartInfo) {
@@ -114,7 +114,7 @@ export class EchartsHelper {
         <span class="series_name">${val.seriesName}</span>
       `;
       let seriesVal = `
-        <span class="series_value">${_value}</span>
+        <span class="series_value">${Tools.thousandsFormat(_value)}</span>
       `;
 
       content += `
