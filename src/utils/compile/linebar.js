@@ -1,13 +1,19 @@
 import { EchartsHelper } from './base.js';
 
 export class LinebarHelper extends EchartsHelper {
+  // 默认柱状图
   constructor(chartInfo) {
     super(chartInfo);
   }
 
   getSeries() {
     this.stat.forEach((stat) => {
-      let data = _.map(this.list, stat.name);
+      // let _data = _.map(this.list, stat.name);
+      let data = _.map(this.list, (item) => {
+        return {
+          value: item[stat.name]
+        }
+      });
       // // 面积图特殊处理
       if (stat.type == 'area') {
         stat.type = "line";
@@ -29,6 +35,7 @@ export class LinebarHelper extends EchartsHelper {
 } 
 
 export class StackLinebarHelper  extends LinebarHelper {
+  // 堆叠柱状图
   constructor(chartInfo) {
     super(chartInfo);
   }
@@ -37,6 +44,20 @@ export class StackLinebarHelper  extends LinebarHelper {
     this.baseSetInfo(this.chartInfo);
     this.getSeries();
     this.baseSetStack();
+    return this.baseCompile();
+  }
+}
+
+export class StackPercentLinebarHelper extends LinebarHelper {
+  // 百分比堆叠柱状图
+  constructor(chartInfo) {
+    super(chartInfo);
+  }
+
+  run() {
+    this.baseSetInfo(this.chartInfo);
+    this.getSeries();
+    this.baseSetPercent();
     return this.baseCompile();
   }
 }

@@ -1,4 +1,4 @@
-import { LinebarHelper, StackLinebarHelper } from './linebar.js';
+import { LinebarHelper, StackLinebarHelper, StackPercentLinebarHelper } from './linebar.js';
 import { CrossbarHelper, StackCrossbarHelper } from './crossbar.js';
 
 class Compile {
@@ -25,6 +25,10 @@ class Compile {
 
   stackCrossbar() {
     return new StackCrossbarHelper(this.chartInfo).run();
+  }
+
+  stackPercentLinebar() {
+    return new StackPercentLinebarHelper(this.chartInfo).run();
   }
  }
 

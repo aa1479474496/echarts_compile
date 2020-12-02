@@ -23,8 +23,8 @@ let legend = {
 };
 let grid = {
   left: 20,
-  top: 20,
-  right: 20,
+  top: 40,
+  right: 40,
   bottom: 20,
   containLabel: true
 };
@@ -59,7 +59,7 @@ let xAxis = {
     }
   },
   axisTick: {
-    show: true
+    show: false
   }
 };
 let yLeftAxis = {
@@ -85,7 +85,6 @@ let yLeftAxis = {
   },
   nameTextStyle: {
     show: true,
-    updown: true
   },
   axisTick: {
     show: true
@@ -104,17 +103,16 @@ let yRightAxis = {
     }
   },
   axisLine: {
-    show: true,
+    show: false,
     lineStyle: {
       type: "solid"
     }
   },
   nameTextStyle: {
-    show: true,
-    updown: true
+    show: false,
   },
   axisTick: {
-    show: true
+    show: false
   },
   name: "",
   nameRotate: '-0.1'
@@ -166,12 +164,25 @@ let crossbar = {
     grid,
     tooltip,
     toolbox,
-    xAxis,
-    yAxis: [{
-      ...yLeftAxis,
-    }]
+    xAxis: yLeftAxis,
+    yAxis: xAxis
   }
 }
+
+let stackPercentLinebar = _.merge(linebar, {
+  setting: {
+    yAxis: [
+      {
+        ...yLeftAxis, 
+        name: '单位: %',
+        nameTextStyle: {
+          show: true,
+        },
+      },
+      yRightAxis
+    ]
+  }
+})
 
 export default {
   linebar,
@@ -184,5 +195,10 @@ export default {
   stackCrossbar: {
     ...crossbar,
     title: "横向柱状图",
+  },
+
+  stackPercentLinebar: {
+    ...stackPercentLinebar,
+    title: "百分比堆叠柱状图",
   },
 }
