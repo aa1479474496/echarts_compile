@@ -1,0 +1,56 @@
+// echarts tooltip 样式
+.gl_chart_tooltip_wrapper {
+  display: block;
+  width: auto;
+  height: auto;
+  background: rgba(14, 23, 38, 0.9);
+  padding: 12px;
+  max-height: 260px;
+  overflow: auto;
+  border-radius: 4px;
+  @include bg_color(fill_6);
+  @include box_shadow(shadow_4);
+  @include border(color_2);
+}
+
+.line_item {
+  display: flex;
+  align-items: center;
+  height: 24px;
+
+  .line_content {
+    font-size: 12px;
+  }
+
+  .icon_box {
+    display: flex;
+    justify-content: center;
+    width: 16px;
+    margin-right: 12px;
+
+    .line_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      @include bg_color(fill_1);
+
+      .ball {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        @include bg_color(fill_1);
+        @include border(color_2, border, 2px);
+      }
+
+    }
+
+    .def_icon {
+      width: 16px;
+      height: 8px;
+      @include bg_color(fill_2);
+    }
+  }
+}

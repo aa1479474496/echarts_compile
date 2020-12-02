@@ -30,7 +30,9 @@ let grid = {
 };
 let tooltip = {
   trigger: "axis",
-  padding: 4,
+  padding: 0,
+  borderRadius: 0,
+  backgroundColor: 'transparent',
   enterable: true,
   confine: true,
   extraCssText: "z-index:999"
@@ -173,7 +175,7 @@ let stackPercentLinebar = _.merge(linebar, {
   setting: {
     yAxis: [
       {
-        ...yLeftAxis, 
+        ...yLeftAxis,
         name: '单位: %',
         nameTextStyle: {
           show: true,

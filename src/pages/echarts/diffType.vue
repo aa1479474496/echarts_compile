@@ -25,6 +25,27 @@
         </div>
       </el-col>
     </el-row>
+
+    <el-row :gutter="20" style="padding: 12px">
+      <el-col :span="24">
+        <div>
+          <div class="line_item">
+            <div class="icon_box">
+              <div class="def_icon"></div>
+            </div>
+            <span>xxxxxxxx</span>
+          </div>
+          <div class="line_item">
+            <div class="icon_box">
+              <div class="line_icon">
+                <div class="ball"></div>
+              </div>
+            </div>
+            <span>xxxxxxxx</span>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 

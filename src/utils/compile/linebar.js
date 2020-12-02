@@ -11,7 +11,8 @@ export class LinebarHelper extends EchartsHelper {
       // let _data = _.map(this.list, stat.name);
       let data = _.map(this.list, (item) => {
         return {
-          value: item[stat.name]
+          value: item[stat.name],
+          unit: stat.unit
         }
       });
       // // 面积图特殊处理
