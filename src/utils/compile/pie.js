@@ -1,4 +1,4 @@
-
+import Tools from '@/utils/tools.js';
 import { EchartsHelper } from './base.js';
 
 export class PieHelper extends EchartsHelper {
@@ -12,8 +12,11 @@ export class PieHelper extends EchartsHelper {
     let seriesSetting = _.merge({}, chart);
     let stat = this.stat[0]; // 饼图只有一个指标
 
+    if (seriesSetting.label) {
+      seriesSetting.label.formatter = this.labelFormatter.bind(this);
+    }
 
-    let data =  _.map(this.list, (item) => {
+    let data = _.map(this.list, (item) => {
       return {
         value: item[stat.name],
         unit: stat.unit,
@@ -26,6 +29,13 @@ export class PieHelper extends EchartsHelper {
       ...seriesSetting,
       data,
     });
+  }
+
+  labelFormatter(params) {
+    let { name, percent = '', data } = params;
+    let { unit = '', value } = data;
+    let _percent = percent ? `(${percent}%)` : '';
+    return `${name}: ${Tools.thousandsFormat(value)}${unit} ${_percent}`;
   }
 
   run() {

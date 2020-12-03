@@ -167,7 +167,7 @@ export class EchartsHelper {
   getTooltipLineItem(params = {}) {
     let { seriesType = 'bar', color = '', seriesName = '', value, pValue = '', unit = '' } = params;
 
-    let iconDom = this.getTooltipIcon(seriesType, color);
+    let iconDom = seriesType ? this.getTooltipIcon(seriesType, color) : '';
     let seriesnameDom = this.tipdom('series_name', seriesName); // 指标名
     let valueDom = this.tipdom('series_value', Tools.thousandsFormat(value));
     let unitDom = unit ? this.tipdom('series_unit', unit) : '';

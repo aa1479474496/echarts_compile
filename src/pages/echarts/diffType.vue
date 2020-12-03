@@ -1,29 +1,56 @@
 <template>
   <div>
     <el-row :gutter="20" style="padding: 12px">
-      <el-col :span="24">
-        <el-select
-          v-model="chartInfo.type"
-          placeholder="请选择"
-          v-if="chartInfo && chartInfo.type"
-          size="mini"
-        >
-          <el-option
-            v-for="item in chartTypes"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+      <el-col :span="6">
+        <div class="change_item">
+          <span>切换图表类型:</span>
+          <el-select
+            v-model="chartInfo.type"
+            placeholder="请选择"
+            v-if="chartInfo && chartInfo.type"
+            size="mini"
           >
-          </el-option>
-        </el-select>
+            <el-option
+              v-for="item in chartTypes"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+
+         <div class="change_item">
+          <span>切换维度:</span>
+          <el-select
+            v-model="group"
+            value-key="name"
+            placeholder="请选择"
+            size="mini"
+            @change="handleChange"
+          >
+            <el-option
+              v-for="item in grouplist"
+              :key="item.name"
+              :label="item.label"
+              :value="item"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-col>
+      <el-col :span="14">
         <div style="height: 350px">
-          <echarts v-if="chartInfo" :chartInfo="chartInfo"  @echartsInit="echartsInit"/>
+          <echarts
+            v-if="chartInfo"
+            :chartInfo="chartInfo"
+            @echartsInit="echartsInit"
+          />
         </div>
       </el-col>
     </el-row>
 
-  
-    <el-row :gutter="20" style="padding: 12px">
+    <!-- <el-row :gutter="20" style="padding: 12px">
       <el-col :span="24">
         <div>
           <div class="line_item">
@@ -42,12 +69,12 @@
           </div>
         </div>
       </el-col>
-    </el-row>
+    </el-row> -->
   </div>
 </template>
 
 <script>
-import styles from '@/config/styles.js';
+import styles from "@/config/styles.js";
 import compile from "@/utils/compile/index.js";
 import echarts from "@/components/echarts/index.vue";
 export default {
@@ -66,6 +93,11 @@ export default {
         { value: "stackPercentLinebar", label: "百分比堆叠柱状图" },
         { value: "pie", label: "饼图" },
       ],
+      grouplist: [
+        { name: "时间", label: "时间" },
+        { name: "城市", label: "城市" },
+      ],
+      group: { name: "时间", label: "时间" },
     };
   },
   mounted() {
@@ -78,9 +110,9 @@ export default {
       { 时间: "6月", 城市: "南京", 成交面积: 5814.65, 平均面积: 76.76 },
     ];
 
-    let chartInfo = {
+    this.chartInfo = {
       type: "pie",
-      group: [{ name: "时间" }],
+      group: [this.group],
       stat: [
         {
           name: "成交面积",
@@ -106,23 +138,33 @@ export default {
           radius: 120,
           // radius: [50, 70],
           type: "pie",
-          color: styles.diffColors[2]
-        }
+          color: styles.diffColors[2],
+          label: {
+            color: "#1C2536",
+          },
+        },
       },
     };
-
-    this.chartInfo = chartInfo;
   },
 
   methods: {
     echartsInit(instance) {
       // console.log("instance", instance);
     },
+    handleChange() {
+      this.chartInfo.group = [this.group];
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.change_item {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .test_title {
   @include text_color(color_2);
 }
