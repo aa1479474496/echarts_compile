@@ -190,7 +190,14 @@ let pie = {
   setting: {
     title,
     grid,
-    legend,
+    legend: {
+      right: 10,
+      top: 20,
+      bottom: 20,
+      type: 'scroll',
+      orient: 'vertical',
+    },
+    tooltip,
     chart: {
       radius: 100,
       type: 'pie',
