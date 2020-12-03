@@ -197,7 +197,7 @@ let pie = {
       type: 'scroll',
       orient: 'vertical',
     },
-    tooltip,
+    tooltip: _.merge({}, tooltip, {trigger: 'item'}),
     chart: {
       radius: 100,
       type: 'pie',

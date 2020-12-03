@@ -62,4 +62,55 @@ export class StackPercentLinebarHelper extends LinebarHelper {
 }
 
 
+// if (form.getFieldValue('afterDeliverSupportSaleType')?.includes(2)) {
+//   form
+//     .validateFields([
+//       ['returnGoodsAddress', 'detailAddress'],
+//       ['returnGoodsAddress', 'addressee'],
+//       ['returnGoodsAddress', 'contactInformation'],
+//     ])
+//     .catch(() => {
+//       setAddressModalVisible(true);
+//       return false;
+//     })
+//     .then((isPassed = true) => {
+//       if (isPassed) {
+//         form.validateFields().then((values) => {
+//           save(values);
+//         });
+//       }
+//     });
+// } else {
+//   form.validateFields().then((values) => {
+//     save(values);
+//   });
+// }
 
+
+// form.getFieldValue('afterDeliverSupportSaleType')?.includes(2) ? success() : fail();
+
+
+// new Promise((resolve) => {
+//   if (form.getFieldValue('afterDeliverSupportSaleType')?.includes(2)) {
+//     resolve(
+//       form
+//         .validateFields([
+//           ['returnGoodsAddress', 'detailAddress'],
+//           ['returnGoodsAddress', 'addressee'],
+//           ['returnGoodsAddress', 'contactInformation'],
+//         ])
+//         .catch(() => {
+//           setAddressModalVisible(true);
+//           return false;
+//         }),
+//     );
+//     return;
+//   }
+//   resolve(true);
+// }).then((isPassed) => {
+//   console.log('🎯 isPassed==>', isPassed);
+//   if (!isPassed) return;
+//   form.validateFields().then((values) => {
+//     save(values);
+//   });
+// });

@@ -67,6 +67,7 @@ export class EchartsHelper {
       title = params[0].axisValue;
     }
     else {
+      // debugger
       let { componentSubType = '' } = params;
       if (componentSubType == 'radar' || componentSubType == 'pie') {
         title = params.name;
@@ -83,6 +84,7 @@ export class EchartsHelper {
     if (Array.isArray(params)) {
       return this.barContent(params)
     }
+    return '';
 
   }
   barContent(params) {
@@ -90,51 +92,35 @@ export class EchartsHelper {
     let content = '';
     params.forEach(val => {
       // debugger
-      let icon = '';
-      let { seriesType } = val;
-      if (seriesType == 'line') {
-        icon = this.getTooltipLineIcon(val.color);
-      }
-      else {
-        icon = this.getTooltipDefIcon(val.color);
-      }
+      let { seriesType, color, seriesName, unit} = val;
 
       let _value = val.data.value;
       let pValue = ''; // 堆叠百分比图显示. 例如(12%)
-      if ('realValue' in  val.data) {
+
+      if ('realValue' in val.data) {
         // 堆叠百分比图的value 是转换后的， 需要取真实的
         _value = val.data.realValue;
-        pValue = `
-          <span class="series_pvalue">(${val.data.value}%)</span>
-        `
+        pValue = val.data.value;
       }
-      let unit = '';
-      if (val.data.unit) {
-        unit = `
-          <span class="series_unit">${val.data.unit}</span>
-        `;
+      
+      let _params = {
+        seriesType,
+        color,
+        seriesName,
+        value: _value,
+        pValue,
+        unit
       }
-
-      let seriesName = `
-        <span class="series_name">${val.seriesName}</span>
-      `;
-      let seriesVal = `
-        <span class="series_value">${Tools.thousandsFormat(_value)}</span>
-      `;
-
-      content += `
-        <div class="line_item">
-          ${icon}
-          <div class="line_content">
-            ${seriesName}
-            ${seriesVal}
-            ${unit}
-            ${pValue}
-          </div>
-        </div>
-      `;
+      content += this.getTooltipLineItem(_params);
     });
     return content;
+  }
+
+  getTooltipIcon(seriesType, color) {
+    if (seriesType == 'line') {
+      return this.getTooltipLineIcon(color);
+    }
+    return this.getTooltipDefIcon(color);
   }
 
   getTooltipLineIcon(color) {
@@ -154,6 +140,33 @@ export class EchartsHelper {
       <div class="icon_box">
         <div class="def_icon" style="background-color: ${color}"></div>
       </div>
+    `
+  }
+
+  getTooltipLineItem(params = {}) {
+    let { seriesType = 'bar', color = '', seriesName = '', value, pValue = '', unit = '' } = params;
+
+    let iconDom = this.getTooltipIcon(seriesType, color);
+    let seriesnameDom = this.tipdom('series_name', seriesName); // 指标名
+    let valueDom = this.tipdom('series_value', Tools.thousandsFormat(value));
+    let unitDom = unit ? this.tipdom('series_unit', unit) : '';
+    let pValueDom = pValue ? this.tipdom('series_pvalue', `(${Tools.thousandsFormat(pValue)}%)`) : '';
+    return `
+      <div class="line_item">
+        ${iconDom}
+        <div class="line_content">
+          ${seriesnameDom}
+          ${valueDom}
+          ${unitDom}
+          ${pValueDom}
+        </div>
+      </div>
+    `;
+  }
+
+  tipdom(classname = '', val = '') {
+    return `
+      <span class="${classname}">${val}</span>
     `
   }
 
