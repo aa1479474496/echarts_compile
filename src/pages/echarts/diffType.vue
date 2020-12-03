@@ -111,7 +111,8 @@ export default {
     ];
 
     this.chartInfo = {
-      type: "pie",
+      // type: "pie",
+      type: "linebar",
       group: [this.group],
       stat: [
         {
@@ -120,7 +121,6 @@ export default {
           yAxisIndex: 0,
           type: "bar",
           color: "#00cc66",
-          showBackground: true,
         },
         {
           name: "平均面积",
@@ -128,7 +128,6 @@ export default {
           yAxisIndex: 0,
           type: "bar",
           color: "#006eff",
-          showBackground: true,
         },
       ],
       list: this.list,

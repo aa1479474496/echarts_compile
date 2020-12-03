@@ -35,7 +35,16 @@ let tooltip = {
   backgroundColor: 'transparent',
   enterable: true,
   confine: true,
-  extraCssText: "z-index:999"
+  axisPointer: {
+    type: 'shadow',
+    lineStyle: {
+      "color": "rgba(0,0,0,0.15)",
+    },
+    crossStyle: {
+      "color": "rgba(0,0,0,0.15)",
+    }
+  }
+
 };
 let toolbox = {};
 let colors = [];
@@ -197,11 +206,11 @@ let pie = {
       type: 'scroll',
       orient: 'vertical',
     },
-    tooltip: _.merge({}, tooltip, {trigger: 'item'}),
+    tooltip: _.merge({}, tooltip, { trigger: 'item' }),
     chart: {
       radius: 100,
       type: 'pie',
-      color: ["#00cc66","#006eff","#ff3355","#6ede5f","#f9de4c","#f9a84c","#f2677c","#f267bf","#9d57e8"]
+      color: ["#00cc66", "#006eff", "#ff3355", "#6ede5f", "#f9de4c", "#f9a84c", "#f2677c", "#f267bf", "#9d57e8"]
     }
   }
 }
