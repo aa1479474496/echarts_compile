@@ -84,6 +84,11 @@ export class EchartsHelper {
     if (Array.isArray(params)) {
       return this.barContent(params)
     }
+
+    let { componentSubType } = params;
+    if (componentSubType == 'pie') {
+      return this.pieContent(params);
+    }
     return '';
 
   }
@@ -114,6 +119,22 @@ export class EchartsHelper {
       content += this.getTooltipLineItem(_params);
     });
     return content;
+  }
+
+  pieContent(params) {
+    // debugger
+    let { seriesType, color, percent, data, seriesName } = params;
+    let { unit, value } = data;
+    let _params = {
+      seriesType,
+      color,
+      seriesName,
+      value,
+      pValue: percent,
+      unit
+    }
+    return this.getTooltipLineItem(_params);
+
   }
 
   getTooltipIcon(seriesType, color) {
