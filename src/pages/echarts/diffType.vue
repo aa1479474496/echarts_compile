@@ -11,7 +11,12 @@
 
     <el-row :gutter="20" style="padding: 12px">
       <el-col :span="24">
-        <el-select v-model="chartInfo2.type" placeholder="请选择" v-if="chartInfo2&&chartInfo2.type" size="mini">
+        <el-select
+          v-model="chartInfo2.type"
+          placeholder="请选择"
+          v-if="chartInfo2 && chartInfo2.type"
+          size="mini"
+        >
           <el-option
             v-for="item in chartTypes"
             :key="item.value"
@@ -68,16 +73,17 @@ export default {
         { value: "stackLinebar", label: "柱状堆叠图" },
         { value: "stackCrossbar", label: "横向柱状堆叠图" },
         { value: "stackPercentLinebar", label: "百分比堆叠柱状图" },
+        { value: "pie", label: "饼图" },
       ],
     };
   },
   mounted() {
     this.list = [
-      { 时间: "1月", 城市: "21", 成交面积: 5972.00, 平均面积: 1972.00 },
-      { 时间: "2月", 城市: "22", 成交面积: 10000.0, 平均面积: 12000.00 },
-      { 时间: "3月", 城市: "23", 成交面积: 1230.00, 平均面积: 3450.00 },
+      { 时间: "1月", 城市: "21", 成交面积: 5972.0, 平均面积: 1972.0 },
+      { 时间: "2月", 城市: "22", 成交面积: 10000.0, 平均面积: 12000.0 },
+      { 时间: "3月", 城市: "23", 成交面积: 1230.0, 平均面积: 3450.0 },
       { 时间: "4月", 城市: "24", 成交面积: 5000.34, 平均面积: 400.34 },
-      { 时间: "5月", 城市: "上海", 成交面积: 7204.20, 平均面积: 80.09 },
+      { 时间: "5月", 城市: "上海", 成交面积: 7204.2, 平均面积: 80.09 },
       { 时间: "6月", 城市: "南京", 成交面积: 5814.65, 平均面积: 76.76 },
     ];
 
@@ -118,6 +124,7 @@ export default {
           yAxisIndex: 0,
           type: "bar",
           color: "#00cc66",
+          showBackground: true,
         },
         {
           name: "平均面积",
@@ -125,6 +132,7 @@ export default {
           yAxisIndex: 0,
           type: "bar",
           color: "#006eff",
+          showBackground: true,
         },
       ],
       list: this.list,

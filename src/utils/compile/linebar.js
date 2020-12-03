@@ -4,6 +4,8 @@ export class LinebarHelper extends EchartsHelper {
   // 默认柱状图
   constructor(chartInfo) {
     super(chartInfo);
+    this.baseSetInfo(this.chartInfo);
+    this.basexAxis();
   }
 
   getSeries() {
@@ -23,13 +25,11 @@ export class LinebarHelper extends EchartsHelper {
       this.series.push({
         ...stat,
         data,
-        showBackground: true,
       });
     });
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     return this.baseCompile();
   }
@@ -42,7 +42,6 @@ export class StackLinebarHelper  extends LinebarHelper {
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     this.baseSetStack();
     return this.baseCompile();
@@ -56,7 +55,6 @@ export class StackPercentLinebarHelper extends LinebarHelper {
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     this.baseSetPercent();
     return this.baseCompile();

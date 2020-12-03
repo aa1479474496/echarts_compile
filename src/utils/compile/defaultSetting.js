@@ -171,7 +171,7 @@ let crossbar = {
   }
 }
 
-let stackPercentLinebar = _.merge(linebar, {
+let stackPercentLinebar = _.merge({}, linebar, {
   setting: {
     yAxis: [
       {
@@ -184,7 +184,20 @@ let stackPercentLinebar = _.merge(linebar, {
       yRightAxis
     ]
   }
-})
+});
+
+let pie = {
+  setting: {
+    title,
+    grid,
+    legend,
+    chart: {
+      radius: 100,
+      type: 'pie',
+      color: ["#00cc66","#006eff","#ff3355","#6ede5f","#f9de4c","#f9a84c","#f2677c","#f267bf","#9d57e8"]
+    }
+  }
+}
 
 export default {
   linebar,
@@ -203,4 +216,8 @@ export default {
     ...stackPercentLinebar,
     title: "百分比堆叠柱状图",
   },
+  pie: {
+    title: '饼图',
+    ...pie
+  }
 }

@@ -11,7 +11,6 @@ export class CrossbarHelper extends LinebarHelper {
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     this.setyAxis();
     return this.baseCompile();
@@ -25,7 +24,6 @@ export class StackCrossbarHelper extends CrossbarHelper {
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     this.setyAxis();
     this.baseSetStack();

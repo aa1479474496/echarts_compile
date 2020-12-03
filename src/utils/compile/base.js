@@ -8,10 +8,12 @@ export class EchartsHelper {
     this.group = [];
     this.stat = [];
     this.list = [];
-    this.gvals = []; // 维度名
+    this.gvals = []; // 维度值列表
+    this.gname = ''; // 维度名
     this.series = [];
     this.customSetting = {};
     this.setting = {};
+
   }
 
   baseSetInfo() {
@@ -26,10 +28,11 @@ export class EchartsHelper {
       this.gvals = _.uniq(_.map(this.list, this.group[0].name));
     }
 
-    this.setting = _.cloneDeep(chartSettings[this.settingType].setting || {});
+    // 维度名
+    this.gname = this.group[0] && this.group[0].name || '无';
 
+    this.setting = _.cloneDeep(chartSettings[this.settingType].setting || {});
     this.setting = _.merge(this.setting, this.customSetting);
-    this.setting.xAxis.data = this.gvals; // 生成横轴
 
     // 提示格式化
     if (this.setting.tooltip) {
@@ -37,8 +40,11 @@ export class EchartsHelper {
     }
   }
 
+  basexAxis() {
+    this.setting.xAxis.data = this.gvals; // 生成横轴
+  }
+
   tooltipFormatter(params) {
-    console.log('params', params);
     let title = this.tooltipTittle(params);
     let content = this.tooltipContent(params)
     let children = `
@@ -103,7 +109,6 @@ export class EchartsHelper {
         `
       }
       let unit = '';
-
       if (val.data.unit) {
         unit = `
           <span class="series_unit">${val.data.unit}</span>

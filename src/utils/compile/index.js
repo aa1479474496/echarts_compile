@@ -1,5 +1,6 @@
 import { LinebarHelper, StackLinebarHelper, StackPercentLinebarHelper } from './linebar.js';
 import { CrossbarHelper, StackCrossbarHelper } from './crossbar.js';
+import { PieHelper } from './pie.js';
 
 class Compile {
   constructor() {
@@ -29,6 +30,10 @@ class Compile {
 
   stackPercentLinebar() {
     return new StackPercentLinebarHelper(this.chartInfo).run();
+  }
+
+  pie() {
+    return new PieHelper(this.chartInfo).run();
   }
  }
 
