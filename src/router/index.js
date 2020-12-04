@@ -7,8 +7,12 @@ import(/* webpackChunkName: "EchartsPage" */ "@/pages/echarts/index.vue");
 
 const EchartsDiffType = () =>
   import(/* webpackChunkName: "EchartsDiffType" */ "@/pages/echarts/diffType.vue");
+
 const EchartsDiffSettings = () =>
   import(/* webpackChunkName: "EchartsDiffSettings" */ "@/pages/echarts/diffSettings.vue");
+
+const EchartsMacro = () => 
+  import(/* webpackChunkName: "EchartsMacro" */ "@/pages/echarts/macro/index.vue");
 
 const routes = [
   {
@@ -27,6 +31,12 @@ const routes = [
         component: EchartsDiffSettings,
         name: 'echarts/diffsettings',
         title: '数据相同的不同配置'
+      },
+      {
+        path: '/echarts/macro',
+        component: EchartsMacro,
+        name: 'echarts/macro',
+        title: '行业宏观demo'
       }
     ]
   }
