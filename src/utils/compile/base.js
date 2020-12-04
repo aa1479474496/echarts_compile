@@ -214,8 +214,8 @@ export class EchartsHelper {
       });
     }
 
-    // 设置Y轴刻度
-    this.setting.yAxis[0].max = 100;
+    // 设置Y轴刻度 (横向柱状图设置的是 xAxis)
+    this.setting.yAxis[0] ? (this.setting.yAxis[0].max = 100) : (this.setting.xAxis.max = 100);
   }
 
   baseCompile(_options = {}) {

@@ -1,5 +1,5 @@
 import { LinebarHelper, StackLinebarHelper, StackPercentLinebarHelper } from './linebar.js';
-import { CrossbarHelper, StackCrossbarHelper } from './crossbar.js';
+import { CrossbarHelper, StackCrossbarHelper, StackPercentCrossbar } from './crossbar.js';
 import { PieHelper } from './pie.js';
 
 class Compile {
@@ -16,20 +16,24 @@ class Compile {
     return new LinebarHelper(this.chartInfo).run();
   }
 
-  crossbar() {
-    return new CrossbarHelper(this.chartInfo).run();
-  }
-
   stackLinebar() {
     return new StackLinebarHelper(this.chartInfo).run();
+  }
+
+  stackPercentLinebar() {
+    return new StackPercentLinebarHelper(this.chartInfo).run();
+  }
+
+  crossbar() {
+    return new CrossbarHelper(this.chartInfo).run();
   }
 
   stackCrossbar() {
     return new StackCrossbarHelper(this.chartInfo).run();
   }
 
-  stackPercentLinebar() {
-    return new StackPercentLinebarHelper(this.chartInfo).run();
+  stackPercentCrossbar() {
+    return new StackPercentCrossbar(this.chartInfo).run();
   }
 
   pie() {

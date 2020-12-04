@@ -167,19 +167,6 @@ let linebar = {
   }
 }
 
-let crossbar = {
-  title: "横向柱状图",
-  setting: {
-    title,
-    legend,
-    grid,
-    tooltip,
-    toolbox,
-    xAxis: yLeftAxis,
-    yAxis: xAxis
-  }
-}
-
 let stackPercentLinebar = _.merge({}, linebar, {
   setting: {
     yAxis: [
@@ -195,6 +182,35 @@ let stackPercentLinebar = _.merge({}, linebar, {
   }
 });
 
+let crossbar = {
+  title: "横向柱状图",
+  setting: {
+    title,
+    legend,
+    grid,
+    tooltip,
+    toolbox,
+    xAxis: yLeftAxis,
+    yAxis: xAxis
+  }
+}
+
+let stackPercentCrossbar = _.merge({}, crossbar, {
+  setting: {
+    xAxis:
+    {
+      ...yLeftAxis,
+      name: '单位: %',
+      nameTextStyle: {
+        show: true,
+      },
+      nameRotate: -90
+    },
+  }
+});
+
+
+
 let pie = {
   setting: {
     title,
@@ -208,6 +224,7 @@ let pie = {
     },
     tooltip: _.merge({}, tooltip, { trigger: 'item' }),
     chart: {
+      // 这里可以设置对series的一些默认基本配置
       radius: 100,
       type: 'pie',
       color: ["#00cc66", "#006eff", "#ff3355", "#6ede5f", "#f9de4c", "#f9a84c", "#f2677c", "#f267bf", "#9d57e8"]
@@ -217,20 +234,22 @@ let pie = {
 
 export default {
   linebar,
-  crossbar,
   stackLinebar: {
     ...linebar,
     title: "柱状堆叠图",
   },
-
+  stackPercentLinebar: {
+    ...stackPercentLinebar,
+    title: "百分比柱状堆叠图",
+  },
+  crossbar,
   stackCrossbar: {
     ...crossbar,
     title: "横向柱状图",
   },
-
-  stackPercentLinebar: {
-    ...stackPercentLinebar,
-    title: "百分比堆叠柱状图",
+  stackPercentCrossbar: {
+    ...stackPercentCrossbar,
+    title: "百分比横向柱状堆叠图",
   },
   pie: {
     title: '饼图',

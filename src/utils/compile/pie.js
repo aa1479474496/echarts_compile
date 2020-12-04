@@ -5,6 +5,7 @@ export class PieHelper extends EchartsHelper {
   // 默认饼图
   constructor(chartInfo) {
     super(chartInfo);
+    this.baseSetInfo(this.chartInfo);
   }
 
   getSeries() {
@@ -39,7 +40,6 @@ export class PieHelper extends EchartsHelper {
   }
 
   run() {
-    this.baseSetInfo(this.chartInfo);
     this.getSeries();
     return this.baseCompile();
   }

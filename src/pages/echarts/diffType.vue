@@ -87,10 +87,11 @@ export default {
       chartInfo: null,
       chartTypes: [
         { value: "linebar", label: "柱状图" },
-        { value: "crossbar", label: "横向柱状图" },
         { value: "stackLinebar", label: "柱状堆叠图" },
+        { value: "stackPercentLinebar", label: "百分比柱状堆叠图" },
+        { value: "crossbar", label: "横向柱状图" },
         { value: "stackCrossbar", label: "横向柱状堆叠图" },
-        { value: "stackPercentLinebar", label: "百分比堆叠柱状图" },
+        { value: "stackPercentCrossbar", label: "百分比横向柱状堆叠图" },
         { value: "pie", label: "饼图" },
       ],
       grouplist: [

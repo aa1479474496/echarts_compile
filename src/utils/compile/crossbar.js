@@ -30,3 +30,17 @@ export class StackCrossbarHelper extends CrossbarHelper {
     return this.baseCompile();
   }
 }
+
+export class StackPercentCrossbar extends CrossbarHelper {
+  // 百分比横向柱状堆叠图
+  constructor(chartInfo) {
+    super(chartInfo);
+  }
+
+  run() {
+    this.getSeries();
+    this.setyAxis();
+    this.baseSetPercent();
+    return this.baseCompile();
+  }
+}
