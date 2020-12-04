@@ -41,7 +41,7 @@
       </el-col>
       <el-col :span="14">
         <div style="height: 350px">
-          <echarts
+          <Echarts
             v-if="chartInfo"
             :chartInfo="chartInfo"
             @echartsInit="echartsInit"
@@ -76,10 +76,10 @@
 <script>
 import styles from "@/config/styles.js";
 import compile from "@/utils/compile/index.js";
-import echarts from "@/components/echarts/index.vue";
+import Echarts from "@/components/echarts/index.vue";
 export default {
   components: {
-    echarts,
+    Echarts,
   },
   data() {
     return {
@@ -113,7 +113,7 @@ export default {
 
     this.chartInfo = {
       // type: "pie",
-      type: "linebar",
+      type: "crossbar",
       group: [this.group],
       stat: [
         {

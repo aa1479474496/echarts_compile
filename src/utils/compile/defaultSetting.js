@@ -191,7 +191,12 @@ let crossbar = {
     tooltip,
     toolbox,
     xAxis: yLeftAxis,
-    yAxis: xAxis
+    yAxis: [
+      { ...xAxis },
+      yRightAxis
+    ]
+    // xAxis: yLeftAxis,
+    // yAxis: xAxis
   }
 }
 

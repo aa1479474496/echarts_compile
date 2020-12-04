@@ -7,7 +7,7 @@ export class CrossbarHelper extends LinebarHelper {
   }
 
   setyAxis() {
-    this.setting.yAxis.data = this.gvals; // 生成横轴
+    this.setting.yAxis[0].data = this.gvals; // 生成横轴
   }
 
   run() {
@@ -41,6 +41,7 @@ export class StackPercentCrossbar extends CrossbarHelper {
     this.getSeries();
     this.setyAxis();
     this.baseSetPercent();
+    this.setting.xAxis.max = 100;
     return this.baseCompile();
   }
 }

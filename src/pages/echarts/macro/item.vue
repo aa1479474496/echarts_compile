@@ -1,7 +1,6 @@
 <script>
 import Vue from 'vue';
 const context = require.context('./components', true, /\.vue$/);
-console.log('context', context);
 export default {
   render(h) {
     let items =  context.keys().map(key => {
@@ -15,7 +14,17 @@ export default {
         return h('span');
       }
     });
-    return h('div', items);
+    return h('el-row',
+     { 
+       props: {
+         gutter: 20
+       },
+       style: {
+         padding: '24px'
+       }
+     }, 
+     items
+    );
   }
 }
 </script>
