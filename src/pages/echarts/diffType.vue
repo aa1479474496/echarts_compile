@@ -122,6 +122,7 @@ export default {
           yAxisIndex: 0,
           type: "bar",
           color: "#00cc66",
+          
         },
         {
           name: "平均面积",

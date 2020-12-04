@@ -84,3 +84,8 @@
     @include text_color(color_2);
   }
 }
+
+@mixin abs_bg($src, $size:contain) {
+  background: url("~@/assets/images/#{$src}") no-repeat center;
+  background-size: $size;
+}

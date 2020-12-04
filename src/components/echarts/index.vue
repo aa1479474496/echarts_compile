@@ -15,6 +15,7 @@ import "echarts/lib/chart/pie";
 import "echarts/lib/chart/map";
 import "echarts/lib/chart/radar";
 import "echarts/lib/chart/scatter";
+import 'echarts/lib/chart/pictorialBar'
 import "echarts/lib/chart/effectScatter";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/legend";

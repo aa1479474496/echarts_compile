@@ -33,6 +33,9 @@ export class EchartsHelper {
 
     this.setting = _.cloneDeep(chartSettings[this.settingType].setting || {});
     this.setting = _.merge(this.setting, this.customSetting);
+    this.series = this.setting.series || [];
+
+    // debugger
 
     // 提示格式化
     if (this.setting.tooltip) {
