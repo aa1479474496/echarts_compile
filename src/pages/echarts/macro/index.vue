@@ -6,22 +6,25 @@
 </template>
 
 <script>
-import macroItem from './item.vue';
+import macroItem from "./item.vue";
 
 export default {
   components: {
-    macroItem
-  }
-}
+    macroItem,
+  },
+};
 </script>
 
 <style lang="scss">
-  .mac_chart_box {
-    border: 1px solid rgba(11,92,195,0.5);
-    background: rgba(0,92,255,0.08);
+.mac_chart_box {
+  height: 300px;
+  .chart_box_wrap {
+    border: 1px solid rgba(11, 92, 195, 0.5);
+    background: rgba(0, 92, 255, 0.08);
     border-radius: 6px;
   }
-  .macroItem {
-    @include abs_bg('chartDemo/bg.png', cover);
-  }
+}
+.macroItem {
+  @include abs_bg("chartDemo/bg.png", cover);
+}
 </style>

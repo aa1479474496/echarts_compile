@@ -19,7 +19,7 @@ export class LinebarHelper extends EchartsHelper {
       // // 面积图特殊处理
       if (stat.type == 'area') {
         stat.type = "line";
-        stat.areaStyle = {};
+        stat.areaStyle = stat.areaStyle || {};
       }
       this.series.push({
         ...stat,

@@ -1,12 +1,11 @@
 <template>
   <el-col :span="10" class="mac_chart_box">
-    <Echarts v-if="chartInfo" :chartInfo="chartInfo" style="height: 300px" />
+    <Echarts v-if="chartInfo" :chartInfo="chartInfo"/>
   </el-col>
 </template>
 
 <script>
 import echarts from "echarts/lib/echarts";
-
 import Echarts from "@/components/echarts/index.vue";
 export default {
   name: "gdp",
