@@ -100,6 +100,15 @@ export default {
         },
       ],
       customSetting: {
+        tooltip: {
+          axisPointer: {
+            type: "line",
+            lineStyle: {
+              type: "dotted",
+              color: "rgba(255,255,255, 0.4)",
+            },
+          },
+        },
         legend: {
           left: "1%",
           textStyle: {
@@ -112,6 +121,7 @@ export default {
           icon: "roundRect",
         },
       },
+
       list,
     };
   },

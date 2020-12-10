@@ -49,60 +49,79 @@ let tooltip = {
 let toolbox = {};
 let colors = [];
 let xAxis = {
-  type: "category",
-  splitNumber: 5,
-  splitLine: {
-    show: false,
-    lineStyle: {
-      type: "dotted",
-      width: 1
-    }
-  },
-  axisLabel: {
-    show: true,
-    updown: true,
-    rotate: 0
-  },
-  axisLine: {
-    show: true,
-    lineStyle: {
-      type: "solid"
-    }
-  },
+  type: 'category',
   axisTick: {
     show: false
-  }
-};
-let yLeftAxis = {
-  type: "value",
-  splitNumber: 5,
-  splitLine: {
-    show: false,
-    lineStyle: {
-      type: "dotted",
-      width: 1
-    }
-  },
-  axisLabel: {
-    show: true,
-    updown: true,
-    rotate: 0
   },
   axisLine: {
     show: true,
     lineStyle: {
-      type: "solid"
+      color: 'rgba(34,44,85)'
     }
   },
-  nameTextStyle: {
+  axisLabel: {
     show: true,
+    color: '#869CC0',
+    fontSize: 12
+  }
+};
+// let yLeftAxis = {
+//   type: "value",
+//   splitNumber: 5,
+//   splitLine: {
+//     show: false,
+//     lineStyle: {
+//       type: "dotted",
+//       width: 1
+//     }
+//   },
+//   axisLabel: {
+//     show: true,
+//     updown: true,
+//     rotate: 0
+//   },
+//   axisLine: {
+//     show: true,
+//     lineStyle: {
+//       type: "solid"
+//     }
+//   },
+//   nameTextStyle: {
+//     show: true,
+//   },
+//   axisTick: {
+//     show: true
+//   },
+//   name: "",
+//   nameRotate: '0.1'
+// };
+let yLeftAxis = {
+  type: "value",
+  axisLine: {
+    show: true,
+    lineStyle: {
+      color: "rgba(130,145,169, 0.25)",
+    },
   },
   axisTick: {
-    show: true
+    show: false,
   },
-  name: "",
-  nameRotate: '0.1'
-};
+  splitLine: {
+    show: true,
+    lineStyle: {
+      color: ["rgba(130,145,169, 0.25)"],
+      type: "dashed",
+    },
+  },
+  axisLabel: {
+    color: "#869CC0",
+    fontSize: 12,
+  },
+  nameTextStyle: {
+    padding: [0, 0, 0, -20],
+    color: "#999",
+  },
+}
 let yRightAxis = {
   type: "value",
   splitNumber: 5,
