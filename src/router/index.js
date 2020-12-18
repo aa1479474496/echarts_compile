@@ -14,6 +14,11 @@ const EchartsDiffSettings = () =>
 const EchartsMacro = () => 
   import(/* webpackChunkName: "EchartsMacro" */ "@/pages/echarts/macro/index.vue");
 
+// 测试el-select页面
+const SelectIndex = () =>
+import(/* webpackChunkName: "SelectIndex" */ "@/pages/select/index.vue");
+
+
 const routes = [
   {
     path: '/echarts',
@@ -39,6 +44,11 @@ const routes = [
         title: '行业宏观demo'
       }
     ]
+  },
+
+  {
+    path: '/select',
+    component: SelectIndex,
   }
 ]
 
