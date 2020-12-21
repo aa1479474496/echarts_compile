@@ -22,6 +22,14 @@ import(/* webpackChunkName: "SelectIndex" */ "@/pages/select/index.vue");
 const ProvideIndex = () => 
 import(/* webpackChunkName: "ProvideIndex" */ "@/pages/provide/index.vue");
 
+// 测试form页面
+const FormIndex = () => 
+import(/* webpackChunkName: "FormIndex" */ "@/pages/form/index.vue");
+
+// 测试on emit 页面
+const EventsIndex = () => 
+import(/* webpackChunkName: "EventsIndex" */ "@/pages/events/index.vue");
+
 const routes = [
   {
     path: '/echarts',
@@ -56,7 +64,17 @@ const routes = [
   {
     path: '/provide',
     component: ProvideIndex,
+  },
+  {
+    path: '/form',
+    component: FormIndex,
+  },
+  {
+    path: '/events',
+    component: EventsIndex,
   }
+
+  
 ]
 
 const router = new VueRouter({
