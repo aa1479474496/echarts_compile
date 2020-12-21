@@ -18,6 +18,9 @@ const EchartsMacro = () =>
 const SelectIndex = () =>
 import(/* webpackChunkName: "SelectIndex" */ "@/pages/select/index.vue");
 
+// 测试provide inject 页面
+const ProvideIndex = () => 
+import(/* webpackChunkName: "ProvideIndex" */ "@/pages/provide/index.vue");
 
 const routes = [
   {
@@ -49,6 +52,10 @@ const routes = [
   {
     path: '/select',
     component: SelectIndex,
+  },
+  {
+    path: '/provide',
+    component: ProvideIndex,
   }
 ]
 
